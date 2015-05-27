@@ -1,0 +1,28 @@
+{
+    "result": {
+        "title": "This is simple Quiz",
+        "questions": [
+            {
+                "title" : "Question-1",
+                "correct": "a",
+                "answer": [
+                            { 
+                                "a" : "100", 
+                                "b" : "-50", 
+                                "c" : "-50"
+                            }
+                         ]
+            },
+            {
+                "title" : "Question-2",
+                "correct": "b|c",
+                "answer":[{ "a" : "-100", "b" : "30","c" : "70"}]
+            },
+            {
+                "title" : "Question-3",
+                "correct": "a|b|c",
+                "answer":[{ "a" : "20","b" : "50","c" : "30"}]
+            }
+        ]
+    }
+}
