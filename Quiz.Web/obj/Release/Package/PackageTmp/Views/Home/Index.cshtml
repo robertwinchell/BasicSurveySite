@@ -1,0 +1,772 @@
+﻿@model Quiz.Web.Models.HomeModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@section featured {
+    <section class="featured">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3" id="dv">
+                </div>
+            </div>
+            <footer>
+                <p class="help-block">© Crank211 2015 - Daren May - <a href="http://crank211.com" target="_blank">crank211.com</a></p>
+            </footer>
+
+        </div>
+    </section>
+}
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+<script src="@Url.Content("~/Scripts/jquery-1.8.2.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
+<script src="@Url.Content("~/dynamicfolder/QuestionData.js")"></script>
+<script src="@Url.Content("~/dynamicfolder/UserAnswer.js")"></script>
+<script src="@Url.Content("~/dynamicfolder/User.js")"></script>
+
+
+<script type="text/javascript">
+    var count = 0;
+    var shownum = 0;
+    var QuestionAnswer = [];
+    $.getJSON("/dynamicfolder/QuestionData.js", function (data) {
+        debugger;
+
+        var items = [];
+        var dv = document.getElementById("dv");
+        $.each(data, function (key, val1) {
+            debugger;
+            items.push(val1);
+        });
+
+        var length = items.length - 1;
+        QuestionAnswer = items;
+
+
+        for (var cc = 0; cc < items.length; cc++) {
+            debugger;
+            if (count == cc) {
+                var ul = document.createElement('div');
+                ul.setAttribute("id", 'ul' + cc);
+                var linebreak = document.createElement("br");
+                var a1 = document.createElement('a');
+                a1.setAttribute("class", "toc-anchor");
+                a1.setAttribute("name", "what-do-you-know-about-the-news");
+                ul.appendChild(a1);
+
+                var a2 = document.createElement('a');
+                a2.setAttribute("class", "toc-anchor");
+                a2.setAttribute("name", "toc-anchor-269224-1");
+                ul.appendChild(a2);
+
+                var h = document.createElement('h2');
+                var question = document.createTextNode(items[cc].question);
+                var img = document.createElement('img');
+                var image = items[cc].image;
+                if (image != "") {
+                    var linebreak = document.createElement("br");
+                    img.setAttribute("src", '/Content/QuizImage/' + image);
+                    img.setAttribute("style", "height:300;");
+                    img.setAttribute("class", "aligncenter size-full wp-image-263663");
+                    img.setAttribute("alt", "Pew Research News Quiz banner");
+                    h.appendChild(img);
+                    h.appendChild(linebreak);
+                    var linebreak = document.createElement("br");
+                    h.appendChild(linebreak);
+                }
+                h.appendChild(question);
+                ul.appendChild(h);
+                var lianswer = document.createElement('div');
+                var type = items[cc].type;
+                var options = items[cc].options;
+                var opsplit = options.split('--');
+                for (var k = 0; k < opsplit.length; k++) {
+                    var p = document.createElement('p');
+                    var options = document.createTextNode(opsplit[k]);
+                    p.appendChild(options);
+                    lianswer.appendChild(p);
+                }
+
+                ul.appendChild(lianswer);
+                dv.appendChild(ul);
+
+                var linebreak = document.createElement("br");
+                lianswer.appendChild(linebreak);
+
+                var txt = document.createElement('input');
+                txt.setAttribute("type", "text");
+                txt.setAttribute("id", "txtemail");
+                txt.setAttribute("placeholder", "Email");
+                lianswer.appendChild(txt);
+
+                var linebreak = document.createElement("br");
+                lianswer.appendChild(linebreak);
+                var spnemail = document.createElement('span');
+                spnemail.setAttribute("id", "spnemail");
+                spnemail.setAttribute("style", "color:red;");
+                var spntxt = document.createTextNode("");
+                spnemail.appendChild(spntxt);
+                lianswer.appendChild(spnemail);
+
+                var button = document.createElement('button');
+                var op = document.createTextNode("Begin Quiz ");
+                button.appendChild(op);
+                button.setAttribute("id", 'btn' + cc);
+                button.setAttribute("type", "button");
+                button.setAttribute("onclick", "ShowNextQuestion(" + cc + ")");
+                var linebreak = document.createElement("br");
+                lianswer.appendChild(linebreak);
+                var linebreak = document.createElement("br");
+                lianswer.appendChild(linebreak);
+                lianswer.appendChild(button);
+
+                ul.appendChild(lianswer);
+                dv.appendChild(ul);
+            }
+            else if (cc == length) {
+                var ul = document.createElement('div');
+                ul.setAttribute("id", 'ul' + cc);
+                ul.setAttribute("style", "display:none;");
+                var h1 = document.createElement('h1');
+                var title = document.createTextNode(items[cc].question);
+                var linebreak = document.createElement("br");
+                h1.appendChild(title);
+                h1.appendChild(linebreak);
+                ul.appendChild(h1);
+                var lianswer = document.createElement('div');
+                lianswer.setAttribute("id", 'li' + cc);
+
+                var dvscore = document.createElement('div');
+                dvscore.setAttribute("id", "spnresult");
+                lianswer.appendChild(dvscore);
+
+                var linebreak = document.createElement("br");
+                lianswer.appendChild(linebreak);
+                var scorefootnote1 = document.createElement('div');
+                var scoretext1 = document.createTextNode(items[cc].image);
+                scorefootnote1.appendChild(scoretext1);
+                lianswer.appendChild(scorefootnote1);
+                var linebreak = document.createElement("br");
+                lianswer.appendChild(linebreak);
+                var hpercent = document.createElement('h2');
+                hpercent.setAttribute("id", "hpercent");
+                //var htext = document.createTextNode("You scored better than 1% of the population, below 97% and the same as 2%.");
+                var htext = document.createTextNode(items[cc].options);
+                hpercent.appendChild(htext);
+                lianswer.appendChild(hpercent);
+                var linebreak = document.createElement("br");
+                lianswer.appendChild(linebreak);
+
+                var dvbar = document.createElement('div');
+                dvbar.setAttribute("id", "dvbar");
+                dvbar.setAttribute("style", "margin-left:-226px;");
+                var bar = document.createTextNode(items[cc].options);
+                dvbar.appendChild(bar);
+                lianswer.appendChild(dvbar);
+                var linebreak = document.createElement("br");
+                lianswer.appendChild(linebreak);
+
+                var scorefootnote2 = document.createElement('div');
+                var scoretext2 = document.createTextNode(items[cc].type);
+                scorefootnote2.appendChild(scoretext2);
+                lianswer.appendChild(scorefootnote2);
+
+                ul.appendChild(lianswer);
+                dv.appendChild(ul);
+            }
+            else {
+                var questionid = cc;
+                var ul = document.createElement('div');
+                ul.setAttribute("id", 'ul' + cc);
+                ul.setAttribute("style", "display:none;");
+                var linebreak = document.createElement("br");
+                var total = items.length - 2;
+                var label = document.createElement('div')
+                label.setAttribute("id", 'label' + cc);
+                var op = document.createTextNode("Questions " + shownum + " of " + total);
+                label.appendChild(op);
+                ul.appendChild(label);
+                ul.appendChild(linebreak);
+
+                var lititle = document.createElement('div');
+                var question = document.createTextNode(items[cc].question);
+                lititle.appendChild(question);
+                ul.appendChild(lititle);
+                var linebreak = document.createElement("br");
+                ul.appendChild(linebreak);
+
+                var img = document.createElement('img');
+                var image = items[cc].image;
+                if (image != "") {
+                    var linebreak = document.createElement("br");
+                    img.setAttribute("src", '/Content/QuizImage/' + image);
+                    img.setAttribute("style", "height:300");
+                    ul.appendChild(img);
+                    ul.appendChild(linebreak);
+                    var linebreak = document.createElement("br");
+                    ul.appendChild(linebreak);
+                }
+
+                var lianswer = document.createElement('div');
+                lianswer.setAttribute("id", 'li' + cc);
+                var type = items[cc].type;
+                var options = items[cc].options;
+                var correctAnswer = items[cc].correctAnswer;
+                var opsplit = options.split(',');
+                if (type == "Multiple choice") {
+                    for (var k = 0; k < opsplit.length; k++) {
+                        debugger;
+                        var linebreak = document.createElement("br");
+                        var chkbx = document.createElement('input');
+                        chkbx.setAttribute("type", "checkbox");
+                        chkbx.name = k;
+                        chkbx.value = opsplit[k];
+                        var op = document.createTextNode(opsplit[k]);
+                        chkbx.appendChild(op);
+                        lianswer.appendChild(chkbx);
+                        lianswer.appendChild(op);
+                        lianswer.appendChild(linebreak);
+                    }
+                }
+                else if (type == "radio buttons") {
+                    for (var k = 0; k < opsplit.length; k++) {
+                        debugger;
+                        var linebreak = document.createElement("br");
+                        var rdb = document.createElement('input');
+                        rdb.setAttribute("type", "radio");
+                        rdb.name = "radioquestion";
+                        rdb.value = opsplit[k];
+                        var op = document.createTextNode(opsplit[k]);
+                        rdb.appendChild(op);
+                        lianswer.appendChild(rdb);
+                        lianswer.appendChild(op);
+                        lianswer.appendChild(linebreak);
+                    }
+                }
+                else if (type == "image") {
+                    var file = document.createElement('input');
+                    file.setAttribute("id", 'file' + cc);
+                    file.setAttribute("type", "file");
+                    file.setAttribute("onchange", "filesave(this);");
+                    var op = document.createTextNode(options);
+                    file.appendChild(op);
+                    lianswer.appendChild(file);
+                    var img = document.createElement('img');
+                    img.setAttribute("src", "");
+                    img.setAttribute("id", 'img' + cc);
+                    img.setAttribute("style", "width: 40px;height: 35px; margin-top: -30px;margin-left:200px;display: none;");
+                    lianswer.appendChild(img);
+
+                    var linebreak = document.createElement("br");
+                    lianswer.appendChild(linebreak);
+                    var spnimg = document.createElement('span');
+                    spnimg.setAttribute("id", "spnimg");
+                    spnimg.setAttribute("style", "color:red;");
+                    var spntxt = document.createTextNode("");
+                    spnimg.appendChild(spntxt);
+                    lianswer.appendChild(spnimg);
+
+                }
+                else {
+                    var txt = document.createElement('textarea');
+                    txt.setAttribute("row", "7");
+                    txt.setAttribute("cols", "63");
+                    txt.setAttribute("maxlength", "150");
+                    txt.setAttribute("placeholder", "Free text input");
+                    txt.setAttribute("style", "margin: 0px; width: 464px; height: 142px;");
+                    var op = document.createTextNode(options);
+                    txt.appendChild(op);
+                    lianswer.appendChild(txt);
+                }
+                var button = document.createElement('button')
+
+                if (shownum == total) {
+                    var op = document.createTextNode("Get Result");
+                    button.appendChild(op);
+                    button.setAttribute("id", 'btn' + cc);
+                    button.setAttribute("type", "button");
+                    button.setAttribute("onclick", "GetResult(" + cc + ")");
+                    var linebreak = document.createElement("br");
+                    lianswer.appendChild(linebreak);
+                    lianswer.appendChild(button);
+                    ul.appendChild(lianswer);
+                    //var linebreak = document.createElement("br");
+                    //lianswer.appendChild(linebreak);
+                    ul.appendChild(lianswer);
+                    dv.appendChild(ul);
+                }
+                else {
+                    var op = document.createTextNode("Next Question");
+                    button.appendChild(op);
+                    button.setAttribute("id", 'btn' + cc);
+                    button.setAttribute("type", "button");
+                    button.setAttribute("onclick", "ShowNextQuestion(" + cc + ")");
+                    var linebreak = document.createElement("br");
+                    lianswer.appendChild(linebreak);
+                    lianswer.appendChild(button);
+                    ul.appendChild(lianswer);
+                    dv.appendChild(ul);
+                }
+
+            }
+            shownum++;
+        }
+    });
+
+    var userid = "";
+    var useremail = "";
+
+    function ShowNextQuestion(val) {
+        debugger;
+        if (userid != "" && val != 0) {
+            //start saveanswer
+            var dvchild = "";
+            var child = "";
+            var answer = "";
+            var dvli = document.getElementById('li' + val);
+            child = dvli.getElementsByTagName('input');
+
+            if (child.length == 0) {
+                child = dvli.getElementsByTagName('textarea');
+                answer = child[0].value;
+            }
+            else if (child.length == 1) {
+                answer = child[0].value;
+            }
+            else {
+                for (var k = 0; k < child.length; k++) {
+                    if (child[k].type == "checkbox" || child[0].type == "radio") {
+                        if (child[k].checked == true) {
+                            answer = child[k].value;
+                            break;
+                        }
+                    }
+                }
+            }
+
+
+            $.getJSON("/dynamicfolder/UserAnswer.js", function (data) {
+                var id = "";
+                var AnswerList = [];
+                debugger;
+                if (data == null) {
+                    id = 1;
+                }
+                else {
+                    $.each(data, function (key, val1) {
+                        AnswerList.push(val1);
+                    });
+                    id = AnswerList.length + 1;
+                }
+
+                var newAnswer = {
+                    ID: id,
+                    UserID: userid,
+                    QuestionId: val,
+                    Answer: answer
+                };
+                AnswerList.push(newAnswer);
+                AnswerList = JSON.stringify({ 'AnswerList': AnswerList });
+                $.ajax({
+                    contentType: 'application/json; charset=utf-8',
+                    url: "@Url.Action("InsertAnswer", "Home")",
+                    type: 'POST',
+                    datatype: 'json',
+                    data: AnswerList,
+                    success: function (data) {
+                        debugger;
+                        var ul = document.getElementById('ul' + val);
+                        ul.style.display = "none";
+                        var valnw = val + 1;
+                        var ulnw = document.getElementById('ul' + valnw);
+                        ulnw.style.display = "block";
+                    },
+                    error: function () {
+                        // Handle the error
+                    }
+                });
+
+            });
+
+        }
+        else {
+            var chkemail = /^([\w-]+(?:\.[\w-]+)*)@@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+            var email = document.getElementById("txtemail").value;
+            var ret = "";
+            if (chkemail.test(email)) {
+                document.getElementById("spnemail").innerHTML = "";
+                $.getJSON("/dynamicfolder/User.js", function (result) {
+                    debugger;
+                    var UserList = [];
+                    var id = "";
+                    var itemlengh = "";
+                    if (result != null) {
+                        $.each(result, function (key, val1) {
+                            debugger;
+                            if (val1.Email == email) {
+                                document.getElementById("spnemail").innerHTML = "This EmailId Already Exist .";
+                                userid = "";
+                                ret = false;
+                                return false;
+                            }
+                            else {
+                                document.getElementById("spnemail").innerHTML = "";
+                                UserList.push(val1);
+                                itemlengh = UserList.length;
+                                ret = true;
+                            }
+                        });
+                    }
+
+                    else {
+                        ret = true;
+                        itemlengh = 0;
+                    }
+
+                    if (ret == true) {
+                        if (itemlengh == 0) {
+                            id = 1;
+                        }
+                        else {
+                            id = UserList.length + 1;
+                        }
+                        userid = id;
+                        //
+                        var newItem = {
+                            UserId: userid,
+                            Email: email
+                        };
+
+                        UserList.push(newItem);
+                        UserList = JSON.stringify({ 'UserList': UserList });
+
+                        $.ajax({
+                            contentType: 'application/json; charset=utf-8',
+                            url: "@Url.Action("InsertUser", "Home")",
+                            type: 'POST',
+                            datatype: 'json',
+                            data: UserList,
+                            success: function (data) {
+                                debugger;
+                                useremail = email;
+                                var ul = document.getElementById('ul' + val);
+                                ul.style.display = "none";
+                                var valnw = val + 1;
+                                var ulnw = document.getElementById('ul' + valnw);
+                                ulnw.style.display = "block";
+                            },
+                            error: function () {
+                                // Handle the error
+                            }
+                        });
+
+                    }
+                    else {
+                        return false;
+                    }
+                    //spnemail
+                });
+            }
+            else {
+                //alert("Please Give Valid Format.");
+                document.getElementById("spnemail").innerHTML = "Please Give Valid Format.";
+
+            }
+        }
+    }
+
+    var result = "";
+    var bettermarks = "";
+    var belowmarks = "";
+    var scoremarks = "";
+    function GetResult(val) {
+        debugger;
+        if (userid != "") {
+            if (val != 0) {
+                //start saveanswer
+                var dvchild = "";
+                var child = "";
+                var answer = "";
+                var dvli = document.getElementById('li' + val);
+                child = dvli.getElementsByTagName('input');
+                if (child.length == 0) {
+                    child = dvli.getElementsByTagName('textarea');
+                    answer = child[0].value;
+                }
+                else if (child.length == 1) {
+                    if (child[0].type == "file") {
+                        var lastpart = child[0].value;
+                        var extention = lastpart.split('.');
+                        var imagetype = extention[extention.length - 1];
+                        answer = imagetype;
+                    }
+                }
+                else {
+                    for (var k = 0; k < child.length; k++) {
+                        if (child[k].type == "checkbox" || child[0].type == "radio") {
+                            if (child[k].checked == true) {
+                                answer = child[k].value;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (answer != "" || null) {
+                    document.getElementById("spnimg").innerHTML = "";
+                    $.getJSON("/dynamicfolder/UserAnswer.js", function (data) {
+                        var id = "";
+                        var AnswerList = [];
+                        debugger;
+                        if (data == null) {
+                            id = 1;
+                        }
+                        else {
+                            $.each(data, function (key, val1) {
+                                AnswerList.push(val1);
+                            });
+                            id = AnswerList.length + 1;
+                        }
+                        var newAnswer = {
+                            ID: id,
+                            UserID: userid,
+                            QuestionId: val,
+                            Answer: answer
+                        };
+                        AnswerList.push(newAnswer);
+                        AnswerList = JSON.stringify({ 'AnswerList': AnswerList });
+                        $.ajax({
+                            contentType: 'application/json; charset=utf-8',
+                            url: "@Url.Action("InsertAnswer", "Home")",
+                            type: 'POST',
+                            datatype: 'json',
+                            data: AnswerList,
+                            success: function (data) {
+                                debugger;
+                                var questionlenth = QuestionAnswer.length - 2;
+
+                                $.getJSON("/dynamicfolder/UserAnswer.js", function (gggg) {
+                                    debugger;
+
+                                    var lastfetch = [];
+                                    $.each(gggg, function (key, val1) {
+                                        if (val1.UserID == userid) {
+                                            lastfetch.push(val1);
+                                        }
+                                    });
+
+                                    var ww = 0;
+                                    if (lastfetch.length == questionlenth) {
+                                        var looplength = QuestionAnswer.length - 1;
+                                        for (var qq = 1; qq < looplength; qq++) {
+                                            if (lastfetch[ww].Answer != null) {
+                                                if (((QuestionAnswer[qq].correctAnswer).toLowerCase().trim() == (lastfetch[ww].Answer).toLowerCase().trim()) && (QuestionAnswer[qq].id == lastfetch[ww].QuestionId)) {
+                                                    if (result == "") {
+                                                        result = 1;
+                                                    }
+                                                    else {
+                                                        result = result + 1;
+                                                    }
+                                                }
+                                            }
+                                            ww++;
+                                        }
+                                    }
+
+                                    var ul = document.getElementById('ul' + val);
+                                    ul.style.display = "none";
+                                    var valnw = val + 1;
+                                    var ulnw = document.getElementById('ul' + valnw);
+                                    ulnw.style.display = "block";
+
+                                    var spn = document.getElementById("spnresult");
+                                    if (result == "") {
+                                        result = 0;
+                                    }
+
+                                    var msg = "";
+                                    var ss = "<strong>" + result + " Of " + questionlenth + "</strong>";
+                                    spn.innerHTML = "You answered " + ss + " questions correctly.";
+
+                                    msg = "You answered " + result + " Of " + questionlenth + " questions correctly.";
+
+
+                                    var formData = new FormData();
+                                    formData.append("UserEmail", useremail);
+                                    formData.append("Message", msg);
+
+                                    $.ajax({
+                                        url: '@Url.Content("~/Home/SendMessage")',
+                                 @*   url: "@Url.Action("SendMessage", "Home")",*@
+                                        dataType: 'json',
+                                        type: 'POST',
+                                        data: formData,
+                                        contentType: false,
+                                        processData: false,
+
+                                        success: function (data) {
+                                            debugger;
+                                            drawChart();
+                                            var hstring = "";
+                                            if (result != 0 && result != "") {
+                                                hstring = "You scored better than " + bettermarks + "% of the population, below " + belowmarks + "% and the same as " + scoremarks + "%.";
+                                                hpercent.innerHTML = hstring;
+                                            }
+                                            else {
+                                                hstring = "You scored the same as <1% of the public";
+                                                hpercent.innerHTML = hstring;
+                                            }
+                                        }
+                                    });
+
+
+                                });
+
+                            },
+                            error: function () {
+                                // Handle the error
+                            }
+                        });
+                    });
+                }
+                else {
+                    document.getElementById("spnimg").innerHTML = "You must upload an image";
+                }
+
+
+
+                //end saveanswer
+            }
+        }
+    }
+
+    google.load("visualization", "1", { packages: ["corechart"] });
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+        debugger;
+        var rows = new Array();
+
+        rows.push(new Array('Question', 'Percent', { role: "style" }));
+
+        var looplength = QuestionAnswer.length - 1;
+        var flag = false;
+        bettermarks = "";
+        belowmarks = "";
+        scoremarks = "";
+        for (var qq = 1; qq < looplength; qq++) {
+            debugger;
+            if (result == QuestionAnswer[qq].id) {
+                rows.push(new Array(QuestionAnswer[qq].id, QuestionAnswer[qq].percentage, '#D2A932'));
+                scoremarks = QuestionAnswer[qq].percentage;
+                flag = true;
+            }
+            else {
+                rows.push(new Array(QuestionAnswer[qq].id, QuestionAnswer[qq].percentage, '#DDDAC8'));
+                if (flag == false) {
+                    if (bettermarks == "") {
+                        bettermarks = QuestionAnswer[qq].percentage;
+                    }
+                    else {
+                        bettermarks = bettermarks + QuestionAnswer[qq].percentage;
+                    }
+                }
+                if (flag == true) {
+
+                    if (belowmarks == "") {
+                        belowmarks = QuestionAnswer[qq].percentage;
+                    }
+                    else {
+                        belowmarks = belowmarks + QuestionAnswer[qq].percentage;
+                    }
+                }
+            }
+        }
+
+
+        var data = google.visualization.arrayToDataTable(
+           @* [
+               
+          ["Question", "Percent", { role: "style" }],
+
+          //["Copper", 8.94, "#DDDAC8"],
+          //["Silver", 10.49, "#DDDAC8;"],
+          //["Gold", 19.30, "#DDDAC8;"],
+          //["Platinum", 21.45, "color: #DDDAC8;"]
+
+            [Question, @TotalAmount, '@color[i]', '@Date'],
+
+            ]*@
+           rows
+        );
+
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+                         {
+                             calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation"
+                         },
+                         2]);
+
+        var options = {
+            title: "",
+            hAxis: { title: 'TOTAL NUMBER OF QUESTIONS ANSWERED CORRECTLY', textPosition: 'none', minValue: 0, maxValue: 10 },
+            width: 900,
+            height: 500,
+            bar: { groupWidth: "95%" },
+            legend: { position: "none" },
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById("dvbar"));
+        chart.draw(view, options);
+    }
+
+    function filesave(e) {
+        debugger;
+        var formData = new FormData();
+        var totalFiles = document.getElementById(e.id).files.length;
+        var file = document.getElementById(e.id).files[0];
+        var id = e.id;
+        var rowid = id.substr(4);
+
+        var lastpart = e.value;
+        var extention = lastpart.split('.');
+        var imagetype = extention[extention.length - 1];
+
+        if (imagetype == "jpeg" || imagetype == "jpg" || imagetype == "png" || imagetype == "bmp") {
+            
+            document.getElementById("spnimg").innerHTML = "";
+            formData.append("Userid", userid);
+            formData.append("totalfile", totalFiles);
+            formData.append("FileUpload", file);
+            formData.append("Useremail", useremail);
+            $.ajax({
+                url: '@Url.Content("~/Home/Upload")',
+            dataType: 'json',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                debugger;
+                var row = document.getElementById("li" + rowid);
+                var img = row.getElementsByTagName("img");
+                img[0].src = '/dynamicfolder/UserAnswerImage/' + data;
+                img[0].style.display = "block";
+            }
+        });
+    }
+    else {
+        document.getElementById("spnimg").innerHTML = "Please upload only an image of type jpeg, png, or bmp";
+    }
+
+}
+</script>
+
+

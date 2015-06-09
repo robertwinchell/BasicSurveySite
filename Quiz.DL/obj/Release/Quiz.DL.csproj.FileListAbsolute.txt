@@ -1,0 +1,7 @@
+C:\Users\ksoft\Desktop\QuizProject\Quiz.Web\Quiz.DL\bin\Release\Quiz.DL.dll.config
+C:\Users\ksoft\Desktop\QuizProject\Quiz.Web\Quiz.DL\bin\Release\Quiz.DL.dll
+C:\Users\ksoft\Desktop\QuizProject\Quiz.Web\Quiz.DL\bin\Release\Quiz.DL.pdb
+C:\Users\ksoft\Desktop\QuizProject\Quiz.Web\Quiz.DL\bin\Release\EntityFramework.dll
+C:\Users\ksoft\Desktop\QuizProject\Quiz.Web\Quiz.DL\bin\Release\EntityFramework.xml
+C:\Users\ksoft\Desktop\QuizProject\Quiz.Web\Quiz.DL\obj\Release\Quiz.DL.dll
+C:\Users\ksoft\Desktop\QuizProject\Quiz.Web\Quiz.DL\obj\Release\Quiz.DL.pdb

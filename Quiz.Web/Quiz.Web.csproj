@@ -1,0 +1,560 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CCFB9A76-0857-4C81-8B71-7DA5DAD99F7C}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Quiz.Web</RootNamespace>
+    <AssemblyName>Quiz.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.20710.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.1.4.12333\lib\net40-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.1.4.12333\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.1.4.12333\lib\net40-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.1.4.12333\lib\net40-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.1.4.12333\lib\net40-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.1.4.12333\lib\net40-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.OData, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.4.0.0\lib\net40\System.Web.Http.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.2.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.OData.5.2.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Spatial, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\System.Spatial.5.2.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="claCommon.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\HomeModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\QuizImage\PP_14.10.1_quiz.png" />
+    <Content Include="Content\QuizImage\PP_15.04.22_guantanamo_q8.png" />
+    <Content Include="Content\QuizImage\PP_15.04.22_lineMap_q1.png" />
+    <Content Include="Content\QuizImage\PP_15.04.22_malala_q5.jpg" />
+    <Content Include="Content\QuizImage\PP_15.04.22_namePerson_q2.jpg" />
+    <Content Include="Content\QuizImage\PP_15.04.22_nationalTrend_q7.png" />
+    <Content Include="Content\QuizImage\PP_15.04.22_popeFrancis_q3.png" />
+    <Content Include="Content\QuizImage\PP_15.04.22_senateControl_q11.png" />
+    <Content Include="Content\QuizImage\PP_15.04.22_warren_q12.jpg" />
+    <Content Include="Content\QuizImage\PP_15.04.22_whichLeader_q10.jpg" />
+    <Content Include="Content\survey_site\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\survey_site\index.html" />
+    <Content Include="Content\survey_site\js\jquery.js" />
+    <Content Include="Content\survey_site\theme\bootstrap.css" />
+    <Content Include="Content\survey_site\theme\bootstrap.min.css" />
+    <Content Include="Content\survey_site\theme\img\data-vis-01.png" />
+    <Content Include="Content\survey_site\theme\img\data-vis-02.png" />
+    <Content Include="Content\survey_site\theme\img\data-vis-03.png" />
+    <Content Include="Content\survey_site\theme\img\header-ms-logo.png" />
+    <Content Include="Content\survey_site\theme\img\hero-temp.jpg" />
+    <Content Include="Content\survey_site\theme\img\microsoft-header.png" />
+    <Content Include="Content\survey_site\theme\lex-app.css" />
+    <Content Include="Content\survey_site\theme\lex-app.min.css" />
+    <Content Include="Content\survey_site\theme\subway.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="dynamicfolder\UserAnswer.js" />
+    <Content Include="dynamicfolder\QuestionData.js" />
+    <Content Include="dynamicfolder\User.js" />
+    <Content Include="dynamicfolder\UserAnswerImage\1_Lighthouse.jpg" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\survey_site\.git\COMMIT_EDITMSG" />
+    <Content Include="Content\survey_site\.git\config" />
+    <Content Include="Content\survey_site\.git\description" />
+    <Content Include="Content\survey_site\.git\FETCH_HEAD" />
+    <Content Include="Content\survey_site\.git\HEAD" />
+    <Content Include="Content\survey_site\.git\hooks\applypatch-msg.sample" />
+    <Content Include="Content\survey_site\.git\hooks\commit-msg.sample" />
+    <Content Include="Content\survey_site\.git\hooks\post-update.sample" />
+    <Content Include="Content\survey_site\.git\hooks\pre-applypatch.sample" />
+    <Content Include="Content\survey_site\.git\hooks\pre-commit.sample" />
+    <Content Include="Content\survey_site\.git\hooks\pre-push.sample" />
+    <Content Include="Content\survey_site\.git\hooks\pre-rebase.sample" />
+    <Content Include="Content\survey_site\.git\hooks\prepare-commit-msg.sample" />
+    <Content Include="Content\survey_site\.git\hooks\update.sample" />
+    <Content Include="Content\survey_site\.git\index" />
+    <Content Include="Content\survey_site\.git\info\exclude" />
+    <Content Include="Content\survey_site\.git\logs\HEAD" />
+    <Content Include="Content\survey_site\.git\logs\refs\heads\master" />
+    <Content Include="Content\survey_site\.git\logs\refs\remotes\origin\master" />
+    <Content Include="Content\survey_site\.git\objects\02\5cf514f147ba6c5506407a9d2a5fc6f4dd3906" />
+    <Content Include="Content\survey_site\.git\objects\04\7eee26632541a633a9103e11b390906b5638bd" />
+    <Content Include="Content\survey_site\.git\objects\04\eb2b39ca18d69945ed1e60e725fb30544bde3f" />
+    <Content Include="Content\survey_site\.git\objects\05\867182d929a8e286865f32dc245d2b6c5068be" />
+    <Content Include="Content\survey_site\.git\objects\06\488251c4fc8c6f6a352e830e1a79d5afa4b732" />
+    <Content Include="Content\survey_site\.git\objects\07\13e67d0068e9553c5e21bb6024122029cce520" />
+    <Content Include="Content\survey_site\.git\objects\08\0a5118fe9ab2af331e6b1444fff4be840ecc03" />
+    <Content Include="Content\survey_site\.git\objects\08\68ef9f2caaf05c2fdbe9f3f3da1616fe221080" />
+    <Content Include="Content\survey_site\.git\objects\0b\88a89cc56a63effe45558845122b077de03979" />
+    <Content Include="Content\survey_site\.git\objects\0b\cee910ac5f2c249cd6280d1e69fd03d178b24e" />
+    <Content Include="Content\survey_site\.git\objects\0f\287f1a8bdf51607e91d0c8aa6a5be51d6df36e" />
+    <Content Include="Content\survey_site\.git\objects\13\c1800deaaacf739cdb3a4eaba95ee986f656c4" />
+    <Content Include="Content\survey_site\.git\objects\14\032aabd85b43a058cfc7025dd4fa9dd325ea97" />
+    <Content Include="Content\survey_site\.git\objects\14\13fc609ab6f21774de0cb7e01360095584f65b" />
+    <Content Include="Content\survey_site\.git\objects\14\62ce16b325082f98f78d8e28535fe96e86f1da" />
+    <Content Include="Content\survey_site\.git\objects\15\d072b0cd0e31d6bd40fad5aa1cb8fb1fbdefd9" />
+    <Content Include="Content\survey_site\.git\objects\18\97a01ee7c9c12d9fe12e397f9b261eb89630cc" />
+    <Content Include="Content\survey_site\.git\objects\1d\2a4ed257c46f6bd36d7340ab9ea6016c280b63" />
+    <Content Include="Content\survey_site\.git\objects\1d\e622050e5ae83742ed1cfa93751c8a39377de2" />
+    <Content Include="Content\survey_site\.git\objects\1f\1f05ab054412684539a94423c097d6cdadd8ba" />
+    <Content Include="Content\survey_site\.git\objects\22\42c036868d7358ad684313ccab2e4d4704ee94" />
+    <Content Include="Content\survey_site\.git\objects\23\7a8993ddd42d6d2f27272b7cda6f6823031bbc" />
+    <Content Include="Content\survey_site\.git\objects\27\48eead13fa69dc8e7d32a1f0f64e6edb71e6e5" />
+    <Content Include="Content\survey_site\.git\objects\2b\35ed050c3dc67403b43d1dedb8a4d502ee11b4" />
+    <Content Include="Content\survey_site\.git\objects\33\5d80aa6bfebfc5bd64b60f75a9d49ea79687be" />
+    <Content Include="Content\survey_site\.git\objects\33\ed25ce6763de7f8ae195628c1eb168379d8435" />
+    <Content Include="Content\survey_site\.git\objects\38\c4c3d346f974278503a4596a6b6e96b845c0af" />
+    <Content Include="Content\survey_site\.git\objects\39\6196f438fd31e7757a0874ece4a99fe0cf9fd9" />
+    <Content Include="Content\survey_site\.git\objects\3a\cd3afdbacbb7f642e04f7ff434c18107faad69" />
+    <Content Include="Content\survey_site\.git\objects\3f\346e44332b191fd934110584ebf20af5e2be8a" />
+    <Content Include="Content\survey_site\.git\objects\3f\7a3820c1cf7756322917982646352e77119f46" />
+    <Content Include="Content\survey_site\.git\objects\41\abaaadc5dc605c75de869dab943599ef31fbbd" />
+    <Content Include="Content\survey_site\.git\objects\41\bc3a5bb5e2504fa2fe93815947be2f7eef4824" />
+    <Content Include="Content\survey_site\.git\objects\44\88f0cd96e154512794ac7061caf42ed4c52e41" />
+    <Content Include="Content\survey_site\.git\objects\47\b1d5a1aab384e993b689aaaec4212a85260e88" />
+    <Content Include="Content\survey_site\.git\objects\47\c06f06418282f4463217620af517b5da2f4c13" />
+    <Content Include="Content\survey_site\.git\objects\48\35043d3c95647ad842ce994b406f9621c4fe73" />
+    <Content Include="Content\survey_site\.git\objects\49\ee10d4ad39de45e0983d01cbbc50949a1dac2e" />
+    <Content Include="Content\survey_site\.git\objects\4b\be946d3aa8f36a49c9dd77306e02888634be87" />
+    <Content Include="Content\survey_site\.git\objects\4e\bd64bc8ccfaea95bc9ff9606ad240e0f3c152e" />
+    <Content Include="Content\survey_site\.git\objects\4f\88c337d48e16b9d5c76e28cfef5fdbc49789b3" />
+    <Content Include="Content\survey_site\.git\objects\4f\ea66381825320f88252eac5ec67704c80f1b2d" />
+    <Content Include="Content\survey_site\.git\objects\54\a1433dfed8275fa3129f2cd6aa46bad81c9fde" />
+    <Content Include="Content\survey_site\.git\objects\55\6e490d45d004c4e4504153133c5c1050207b65" />
+    <Content Include="Content\survey_site\.git\objects\55\7274e368f2eec1ee52744bc6089df2b8c33007" />
+    <Content Include="Content\survey_site\.git\objects\59\14ee2a159774601c2efe5ca455a08f4d510b2c" />
+    <Content Include="Content\survey_site\.git\objects\5a\746049e3cea5c5f912144e11850d56a36cf0d2" />
+    <Content Include="Content\survey_site\.git\objects\60\7edc4c904c80b1f2b1f112174d209502c2c158" />
+    <Content Include="Content\survey_site\.git\objects\61\b77474f9ad6ec9f9b5dda2ed67703f7580fde2" />
+    <Content Include="Content\survey_site\.git\objects\62\a085a4841a536094f22943c9557240e2d8c19d" />
+    <Content Include="Content\survey_site\.git\objects\62\a85c368e8c4afcb276ad96df2da65ba84fb6be" />
+    <Content Include="Content\survey_site\.git\objects\64\539b54c3751a6d9adb44c8e3a45ba5a73b77f0" />
+    <Content Include="Content\survey_site\.git\objects\68\ba6017bf184d805a39530f0acd5cbb1495e522" />
+    <Content Include="Content\survey_site\.git\objects\68\cdb5e18602af3ab8e3ddba57a06045ef1c65bb" />
+    <Content Include="Content\survey_site\.git\objects\6d\5bfe087aed3342270b1de9d70d034c474a3779" />
+    <Content Include="Content\survey_site\.git\objects\6d\751bb9ce0adfe6aac21bc69fbb9aa43880eae0" />
+    <Content Include="Content\survey_site\.git\objects\6f\2eb62126f12b00cde15580964870c7c3e4eb4c" />
+    <Content Include="Content\survey_site\.git\objects\6f\55ed967082caf4ef515f88c9d591f95036a470" />
+    <Content Include="Content\survey_site\.git\objects\71\e23089ccbfbfbc60434f8ec06b052a6080e150" />
+    <Content Include="Content\survey_site\.git\objects\75\ae236ba08838bbd3a2b967fb219bbd01f6107e" />
+    <Content Include="Content\survey_site\.git\objects\77\ae651cd36bb05067b08a8bc36de1a387eb158b" />
+    <Content Include="Content\survey_site\.git\objects\7a\8ca27a8ff54db1c439812d4b295d9a1c4f6f76" />
+    <Content Include="Content\survey_site\.git\objects\7d\eb505d25f09cfc939beff303c0f6d52e83a9a2" />
+    <Content Include="Content\survey_site\.git\objects\7f\429cbdeb97ebdb426ad8e0dabd92b248a64f5e" />
+    <Content Include="Content\survey_site\.git\objects\81\e70f728eacaee5b5d3ab71beb85ff867297b9f" />
+    <Content Include="Content\survey_site\.git\objects\84\8fcf505a0acda17972838b57ecccf85e08b42c" />
+    <Content Include="Content\survey_site\.git\objects\88\68a1feef0f3a7a4b0fabe7548435bfeb481df2" />
+    <Content Include="Content\survey_site\.git\objects\8b\5b065cb84cec3364d028e046b3fd24878f20b1" />
+    <Content Include="Content\survey_site\.git\objects\8b\9dfe8858af95822d3d18824c349fb3b8252818" />
+    <Content Include="Content\survey_site\.git\objects\92\d8a056cd3b73c82937b0c9d478a86baa6d142a" />
+    <Content Include="Content\survey_site\.git\objects\93\036d3c95005f318797618995f07f1932086d29" />
+    <Content Include="Content\survey_site\.git\objects\94\ca58f12a93ea0b3fb378b73eec63d8c9ee7372" />
+    <Content Include="Content\survey_site\.git\objects\94\fb5490a2ed10b2c69a4a567a4fd2e4f706d841" />
+    <Content Include="Content\survey_site\.git\objects\97\648114bfa97d37710577d1666a0b37981ac7a4" />
+    <Content Include="Content\survey_site\.git\objects\98\1af398aa829ab137bb4767c011b435eccd675f" />
+    <Content Include="Content\survey_site\.git\objects\9a\5a27006a51f4ac0d350cf11060aa548cd6ef6b" />
+    <Content Include="Content\survey_site\.git\objects\9b\d2e732d3eb52635dd8b0f26107ed9ef63ade4f" />
+    <Content Include="Content\survey_site\.git\objects\9d\5684743309e74514cebc5e5a2e49d876f38c93" />
+    <Content Include="Content\survey_site\.git\objects\9e\612858f802245ddcbf59788a0db942224bab35" />
+    <Content Include="Content\survey_site\.git\objects\9f\7a67ee3d08a03ad10277d703805d315cd43d54" />
+    <Content Include="Content\survey_site\.git\objects\a0\8b4d48c4c8715dac93a5422f0d340ae9cc6bff" />
+    <Content Include="Content\survey_site\.git\objects\a3\d11b136211f3ee4a4d3beeb19c5ffba203b15b" />
+    <Content Include="Content\survey_site\.git\objects\a6\bf78192469c48166b7ddcd494ba2cbec376233" />
+    <Content Include="Content\survey_site\.git\objects\a8\712f25b935f6d13e3d7ea9471d354a7bccd4df" />
+    <Content Include="Content\survey_site\.git\objects\a8\be65089606863ad878173e951b62fb387daf52" />
+    <Content Include="Content\survey_site\.git\objects\ae\0305177e99f7ca4b4d5ce678d6c0c81f7ac1a9" />
+    <Content Include="Content\survey_site\.git\objects\af\344607bd967350aab19a91d8f069eee20b4230" />
+    <Content Include="Content\survey_site\.git\objects\af\4408fc2d6846b5656d9d0d12f2f4cbf4404cf6" />
+    <Content Include="Content\survey_site\.git\objects\af\d3331c31da856f226b354916e21ebad9d3311a" />
+    <Content Include="Content\survey_site\.git\objects\b1\db31d7bfc19a757d02fd773db765c4273549a1" />
+    <Content Include="Content\survey_site\.git\objects\b1\e39626a02568b20cb3e50562c8251e55e81a09" />
+    <Content Include="Content\survey_site\.git\objects\b2\e41a42c7455299093c85cfe2cbae1d2ac43ec0" />
+    <Content Include="Content\survey_site\.git\objects\b5\fb9d02cf5197e50517a60dae2e3447a032cfe5" />
+    <Content Include="Content\survey_site\.git\objects\b6\9cfdcf47a5967aacd9ec671d8e1e8a4a7b0d98" />
+    <Content Include="Content\survey_site\.git\objects\b9\3a4953fff68df523aa7656497ee339d6026d64" />
+    <Content Include="Content\survey_site\.git\objects\bf\e4c36ca1b544faeb0900cc59aa36ffda2fe41e" />
+    <Content Include="Content\survey_site\.git\objects\c1\1ad2fb7471dd29ae781f1aefdfb8bb5e4a7d6c" />
+    <Content Include="Content\survey_site\.git\objects\c2\315e572f83385f10407cae46253526e0bb3dd7" />
+    <Content Include="Content\survey_site\.git\objects\c4\199db927e795b6d7d35a39d475ef3087e2dfec" />
+    <Content Include="Content\survey_site\.git\objects\c7\0bb939ebe253a17a39419d595d0038c7a683bc" />
+    <Content Include="Content\survey_site\.git\objects\ca\05dbf457000d122a3b8afcc3847e44cffea421" />
+    <Content Include="Content\survey_site\.git\objects\ca\e5eaff924fed1e4d5978952d9c8490faf8500c" />
+    <Content Include="Content\survey_site\.git\objects\cb\01d503fbe5f7615e53c989bbee20c07c86e7ef" />
+    <Content Include="Content\survey_site\.git\objects\ce\f189f20f09107ed5bbc8e4049d4972980e95ce" />
+    <Content Include="Content\survey_site\.git\objects\d1\1692103adc4ddbc52f47ce7503725c24df1477" />
+    <Content Include="Content\survey_site\.git\objects\d1\8d6de9ed6a7af49415277cb72e57b7dbd42d0f" />
+    <Content Include="Content\survey_site\.git\objects\d2\6ce7f6ad5846fd4e2ffd32865492d3f1f8259c" />
+    <Content Include="Content\survey_site\.git\objects\d4\58c78613e6dc082141783ef45d56a5a7d601c3" />
+    <Content Include="Content\survey_site\.git\objects\d6\c4c2e90f1997fbc448c139cb9f8e35b56dc25b" />
+    <Content Include="Content\survey_site\.git\objects\d8\b0e5849679f471c69b815fb18998b2fbf061e9" />
+    <Content Include="Content\survey_site\.git\objects\e1\00655b70e38480e2029a7c945e5984d15c9784" />
+    <Content Include="Content\survey_site\.git\objects\e2\643ed664427f7a72e6f683cb413ff42e56b2b9" />
+    <Content Include="Content\survey_site\.git\objects\e4\8d1cc2f86dac410115dfb09fd9a756a3182932" />
+    <Content Include="Content\survey_site\.git\objects\e4\b50629e97cd9bbac46c4c2d9d36a55f3f9686d" />
+    <Content Include="Content\survey_site\.git\objects\e9\d361cbb047a2c6e1c4f35c613f5b5f8b6ae018" />
+    <Content Include="Content\survey_site\.git\objects\f0\7996a34dbc19a1acc1c024a2410eb2b1b25271" />
+    <Content Include="Content\survey_site\.git\objects\f2\33cb3e199f21ac194212e10ebb1e12feb0682b" />
+    <Content Include="Content\survey_site\.git\objects\f3\b3929d6d0e55b9fffe1c2dbde5747b21eb0014" />
+    <Content Include="Content\survey_site\.git\objects\f5\a3ba6ae20445c7e20e909c659848c21d7a3672" />
+    <Content Include="Content\survey_site\.git\objects\f7\951c3d75cbe6bb72ea5f7493920611a2800797" />
+    <Content Include="Content\survey_site\.git\objects\fb\ec2efc9516c08cd2f5e38ef792006baec44b7a" />
+    <Content Include="Content\survey_site\.git\objects\fe\b1e9ed0dad8d0db00ebb93b175591a88abf707" />
+    <Content Include="Content\survey_site\.git\ORIG_HEAD" />
+    <Content Include="Content\survey_site\.git\refs\heads\master" />
+    <Content Include="Content\survey_site\.git\refs\remotes\origin\master" />
+    <Content Include="Content\survey_site\fontconfig\63847aa2b282432ae68ddac46bfbdb37-le32d4.cache-3" />
+    <Content Include="Content\survey_site\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\survey_site\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\survey_site\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\survey_site\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\survey_site\theme\bootstrap.less" />
+    <Content Include="Content\survey_site\theme\lex-app.less" />
+    <Content Include="Content\survey_site\theme\_lex-app-styles.less" />
+    <Content Include="Content\survey_site\theme\_lex-block-grid.less" />
+    <Content Include="Content\survey_site\theme\_lex-bootstrap-patch.less" />
+    <Content Include="Content\survey_site\theme\_lex-variables.less" />
+    <Content Include="Content\survey_site\theme\_variables.less" />
+    <Content Include="Content\survey_site\Web.config" />
+    <None Include="Properties\PublishProfiles\Quiz.pubxml" />
+    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\survey_site\.git\branches\" />
+    <Folder Include="Content\survey_site\.git\lfs\objects\logs\" />
+    <Folder Include="Content\survey_site\.git\lfs\tmp\" />
+    <Folder Include="Content\survey_site\.git\objects\info\" />
+    <Folder Include="Content\survey_site\.git\objects\pack\" />
+    <Folder Include="Content\survey_site\.git\refs\tags\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Quiz.BL\Quiz.BL.csproj">
+      <Project>{978fd1f9-ba18-46ac-b097-df2b984c04fa}</Project>
+      <Name>Quiz.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Quiz.DL\Quiz.DL.csproj">
+      <Project>{937baf9a-fb5e-464d-86f6-2d60d4c318ed}</Project>
+      <Name>Quiz.DL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59584</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:2071/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
