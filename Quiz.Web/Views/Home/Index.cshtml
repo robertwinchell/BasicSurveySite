@@ -35,12 +35,12 @@
     var shownum = 0;
     var QuestionAnswer = [];
     $.getJSON("/dynamicfolder/QuestionData.js", function (data) {
-        debugger;
+     
 
         var items = [];
         var dv = document.getElementById("dv");
         $.each(data, function (key, val1) {
-            debugger;
+        
             items.push(val1);
         });
 
@@ -49,7 +49,7 @@
 
 
         for (var cc = 0; cc < items.length; cc++) {
-            debugger;
+           
             if (count == cc) {
                 var ul = document.createElement('div');
                 ul.setAttribute("id", 'ul' + cc);
@@ -220,7 +220,7 @@
                 var opsplit = options.split(',');
                 if (type == "Multiple choice") {
                     for (var k = 0; k < opsplit.length; k++) {
-                        debugger;
+                       
                         var linebreak = document.createElement("br");
                         var chkbx = document.createElement('input');
                         chkbx.setAttribute("type", "checkbox");
@@ -235,7 +235,7 @@
                 }
                 else if (type == "radio buttons") {
                     for (var k = 0; k < opsplit.length; k++) {
-                        debugger;
+                      
                         var linebreak = document.createElement("br");
                         var rdb = document.createElement('input');
                         rdb.setAttribute("type", "radio");
@@ -322,7 +322,7 @@
     var useremail = "";
 
     function ShowNextQuestion(val) {
-        debugger;
+      
         if (userid != "" && val != 0) {
             //start saveanswer
             var dvchild = "";
@@ -353,7 +353,7 @@
             $.getJSON("/dynamicfolder/UserAnswer.js", function (data) {
                 var id = "";
                 var AnswerList = [];
-                debugger;
+            
                 if (data == null) {
                     id = 1;
                 }
@@ -379,7 +379,7 @@
                     datatype: 'json',
                     data: AnswerList,
                     success: function (data) {
-                        debugger;
+                     
                         var ul = document.getElementById('ul' + val);
                         ul.style.display = "none";
                         var valnw = val + 1;
@@ -401,13 +401,13 @@
             if (chkemail.test(email)) {
                 document.getElementById("spnemail").innerHTML = "";
                 $.getJSON("/dynamicfolder/User.js", function (result) {
-                    debugger;
+                  
                     var UserList = [];
                     var id = "";
                     var itemlengh = "";
                     if (result != null) {
                         $.each(result, function (key, val1) {
-                            debugger;
+                         
                             if (val1.Email == email) {
                                 document.getElementById("spnemail").innerHTML = "This EmailId Already Exist .";
                                 userid = "";
@@ -422,49 +422,56 @@
                             }
                         });
                     }
-
                     else {
                         ret = true;
-                        itemlengh = 0;
                     }
 
                     if (ret == true) {
-                        if (itemlengh == 0) {
-                            id = 1;
-                        }
-                        else {
-                            id = UserList.length + 1;
-                        }
-                        userid = id;
-                        //
-                        var newItem = {
-                            UserId: userid,
-                            Email: email
-                        };
-
-                        UserList.push(newItem);
-                        UserList = JSON.stringify({ 'UserList': UserList });
-
+                     
+                        var formData = new FormData();
+                        formData.append("UserEmail", email);
                         $.ajax({
-                            contentType: 'application/json; charset=utf-8',
-                            url: "@Url.Action("InsertUser", "Home")",
+                            url: '@Url.Content("~/Home/InsertUpdateUser")',
+                            dataType: 'json',
                             type: 'POST',
-                            datatype: 'json',
-                            data: UserList,
+                            data: formData,
+                            contentType: false,
+                            processData: false,
                             success: function (data) {
-                                debugger;
-                                useremail = email;
-                                var ul = document.getElementById('ul' + val);
-                                ul.style.display = "none";
-                                var valnw = val + 1;
-                                var ulnw = document.getElementById('ul' + valnw);
-                                ulnw.style.display = "block";
-                            },
-                            error: function () {
-                                // Handle the error
+                             
+                                userid = data;
+
+                                var newItem = {
+                                    UserId: userid,
+                                    Email: email
+                                };
+
+                                UserList.push(newItem);
+                                UserList = JSON.stringify({ 'UserList': UserList });
+
+                                $.ajax({
+                                    contentType: 'application/json; charset=utf-8',
+                                    url: "@Url.Action("InsertUser", "Home")",
+                                    type: 'POST',
+                                    datatype: 'json',
+                                    data: UserList,
+                                    success: function (data) {
+                                       
+                                        useremail = email;
+                                        var ul = document.getElementById('ul' + val);
+                                        ul.style.display = "none";
+                                        var valnw = val + 1;
+                                        var ulnw = document.getElementById('ul' + valnw);
+                                        ulnw.style.display = "block";
+                                    },
+                                    error: function () {
+                                        // Handle the error
+                                    }
+                                });
+
+
                             }
                         });
-
                     }
                     else {
                         return false;
@@ -485,7 +492,7 @@
     var belowmarks = "";
     var scoremarks = "";
     function GetResult(val) {
-        debugger;
+     
         if (userid != "") {
             if (val != 0) {
                 //start saveanswer
@@ -522,7 +529,7 @@
                     $.getJSON("/dynamicfolder/UserAnswer.js", function (data) {
                         var id = "";
                         var AnswerList = [];
-                        debugger;
+                      
                         if (data == null) {
                             id = 1;
                         }
@@ -547,18 +554,23 @@
                             datatype: 'json',
                             data: AnswerList,
                             success: function (data) {
-                                debugger;
+                              
                                 var questionlenth = QuestionAnswer.length - 2;
 
                                 $.getJSON("/dynamicfolder/UserAnswer.js", function (gggg) {
-                                    debugger;
+                                    
 
                                     var lastfetch = [];
-                                    $.each(gggg, function (key, val1) {
-                                        if (val1.UserID == userid) {
-                                            lastfetch.push(val1);
-                                        }
-                                    });
+                                    if (gggg != null) {
+                                     
+                                        $.each(gggg, function (key, val1) {
+                                         
+                                            if (val1.UserID == userid) {
+                                                lastfetch.push(val1);
+                                            }
+                                        });
+                                    }
+
 
                                     var ww = 0;
                                     if (lastfetch.length == questionlenth) {
@@ -598,6 +610,7 @@
 
                                     var formData = new FormData();
                                     formData.append("UserEmail", useremail);
+                                    formData.append("Userid", userid);
                                     formData.append("Message", msg);
 
                                     $.ajax({
@@ -610,7 +623,7 @@
                                         processData: false,
 
                                         success: function (data) {
-                                            debugger;
+                                          
                                             drawChart();
                                             var hstring = "";
                                             if (result != 0 && result != "") {
@@ -648,7 +661,7 @@
     google.load("visualization", "1", { packages: ["corechart"] });
     google.setOnLoadCallback(drawChart);
     function drawChart() {
-        debugger;
+      
         var rows = new Array();
 
         rows.push(new Array('Question', 'Percent', { role: "style" }));
@@ -659,7 +672,7 @@
         belowmarks = "";
         scoremarks = "";
         for (var qq = 1; qq < looplength; qq++) {
-            debugger;
+          
             if (result == QuestionAnswer[qq].id) {
                 rows.push(new Array(QuestionAnswer[qq].id, QuestionAnswer[qq].percentage, '#D2A932'));
                 scoremarks = QuestionAnswer[qq].percentage;
@@ -728,7 +741,7 @@
     }
 
     function filesave(e) {
-        debugger;
+      
         var formData = new FormData();
         var totalFiles = document.getElementById(e.id).files.length;
         var file = document.getElementById(e.id).files[0];
@@ -740,7 +753,7 @@
         var imagetype = extention[extention.length - 1];
 
         if (imagetype == "jpeg" || imagetype == "jpg" || imagetype == "png" || imagetype == "bmp") {
-            
+
             document.getElementById("spnimg").innerHTML = "";
             formData.append("Userid", userid);
             formData.append("totalfile", totalFiles);
@@ -748,25 +761,27 @@
             formData.append("Useremail", useremail);
             $.ajax({
                 url: '@Url.Content("~/Home/Upload")',
-            dataType: 'json',
-            type: 'POST',
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function (data) {
-                debugger;
-                var row = document.getElementById("li" + rowid);
-                var img = row.getElementsByTagName("img");
-                img[0].src = '/dynamicfolder/UserAnswerImage/' + data;
-                img[0].style.display = "block";
-            }
-        });
-    }
-    else {
-        document.getElementById("spnimg").innerHTML = "Please upload only an image of type jpeg, png, or bmp";
-    }
+                dataType: 'json',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                 
+                    var row = document.getElementById("li" + rowid);
+                    var img = row.getElementsByTagName("img");
+                    img[0].src = '/dynamicfolder/UserAnswerImage/' + data;
+                    img[0].style.display = "block";
 
-}
+
+                }
+            });
+        }
+        else {
+            document.getElementById("spnimg").innerHTML = "Please upload only an image of type jpeg, png, or bmp";
+        }
+
+    }
 </script>
 
 

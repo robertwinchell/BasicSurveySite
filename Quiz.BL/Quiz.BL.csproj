@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Quiz.DL\Quiz.DL.csproj">
-      <Project>{937baf9a-fb5e-464d-86f6-2d60d4c318ed}</Project>
+      <Project>{ef534cf4-3eed-4391-b2e0-a8be410c61cf}</Project>
       <Name>Quiz.DL</Name>
     </ProjectReference>
   </ItemGroup>

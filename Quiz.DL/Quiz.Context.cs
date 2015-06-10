@@ -13,10 +13,10 @@ namespace Quiz.DL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class QuizEntities : DbContext
+    public partial class QuizContainer : DbContext
     {
-        public QuizEntities()
-            : base("name=QuizEntities")
+        public QuizContainer()
+            : base("name=QuizContainer")
         {
         }
     

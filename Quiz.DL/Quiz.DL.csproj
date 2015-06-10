@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{937BAF9A-FB5E-464D-86F6-2D60D4C318ED}</ProjectGuid>
+    <ProjectGuid>{EF534CF4-3EED-4391-B2E0-A8BE410C61CF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Quiz.DL</RootNamespace>
@@ -69,11 +69,13 @@
     <Compile Include="UserDL.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <EntityDeploy Include="Quiz.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Quiz.Designer.cs</LastGenOutput>
     </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Quiz.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

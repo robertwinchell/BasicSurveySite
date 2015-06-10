@@ -16,6 +16,7 @@ namespace Quiz.Web.Controllers
 {
     public class HomeController : Controller
     {
+        UserBL objuserbl = new UserBL();
         public ActionResult Index()
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
@@ -61,7 +62,7 @@ namespace Quiz.Web.Controllers
         [HttpPost]
         public ActionResult Upload(FormCollection formdata)
         {
-            UserBL objuserbl = new UserBL();
+
             try
             {
                 HomeModel model = new HomeModel();
@@ -86,7 +87,7 @@ namespace Quiz.Web.Controllers
                         name = Userid + "_" + System.IO.Path.GetFileName(file.FileName);
                         string fullPath = Path.Combine(Server.MapPath("~/dynamicfolder/UserAnswerImage"), name);
                         file.SaveAs(fullPath);
-                        var data = objuserbl.SaveUser(email, name);
+                        var data = objuserbl.UpdateUser(Userid, email, name, false);
 
                     }
                 }
@@ -121,6 +122,8 @@ namespace Quiz.Web.Controllers
                 result = objCom.SendMail(UserEmail, "udal.bharti@gmail.com", subject, body);
                 if (result > 0)
                 {
+                    int Userid = Convert.ToInt32(formdata["Userid"]);
+                    var data = objuserbl.UpdateUser(Userid, UserEmail, null, true);
                     message = true;
                 }
                 return Json(message, JsonRequestBehavior.AllowGet);
@@ -132,5 +135,11 @@ namespace Quiz.Web.Controllers
             }
         }
 
+        public ActionResult InsertUpdateUser(FormCollection formdata)
+        {
+            string UserEmail = Convert.ToString(formdata["UserEmail"]);
+            var data = objuserbl.SaveUser(UserEmail, null, false);
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
     }
 }

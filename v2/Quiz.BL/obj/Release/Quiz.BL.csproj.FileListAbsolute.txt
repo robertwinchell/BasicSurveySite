@@ -1,0 +1,9 @@
+C:\Users\ksoft\Desktop\QuizProject\Quiz.Web\Quiz.BL\bin\Release\Quiz.BL.dll
+C:\Users\ksoft\Desktop\QuizProject\Quiz.Web\Quiz.BL\bin\Release\Quiz.BL.pdb
+C:\Users\ksoft\Desktop\QuizProject\Quiz.Web\Quiz.BL\bin\Release\Quiz.DL.dll
+C:\Users\ksoft\Desktop\QuizProject\Quiz.Web\Quiz.BL\bin\Release\EntityFramework.dll
+C:\Users\ksoft\Desktop\QuizProject\Quiz.Web\Quiz.BL\bin\Release\Quiz.DL.pdb
+C:\Users\ksoft\Desktop\QuizProject\Quiz.Web\Quiz.BL\bin\Release\EntityFramework.xml
+C:\Users\ksoft\Desktop\QuizProject\Quiz.Web\Quiz.BL\obj\Release\Quiz.BL.csprojResolveAssemblyReference.cache
+C:\Users\ksoft\Desktop\QuizProject\Quiz.Web\Quiz.BL\obj\Release\Quiz.BL.dll
+C:\Users\ksoft\Desktop\QuizProject\Quiz.Web\Quiz.BL\obj\Release\Quiz.BL.pdb
