@@ -112,14 +112,14 @@ namespace Quiz.Web.Controllers
                 string UserEmail = Convert.ToString(formdata["UserEmail"]);
                 string Message = Convert.ToString(formdata["Message"]);
                 string body = "";
-                body = "Dear User," + "<br />" + Message + "<br /><br />";
-                body = body + "Thank you for participating Quiz.<br />";
+                body = "Dear Human Unit," + "<br />" + Message + "<br /><br />";
+                body = body + "Thank you for participating, you will be allowed to continue exisiting!.<br /> ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn!";
                 body = body + "With Regards,<br />";
-                body = body + "quiz.ksoftware.co.in";
+                body = body + "Cthulhu";
 
 
                 string subject = "Re :Quiz Score";
-                result = objCom.SendMail(UserEmail, "udal.bharti@gmail.com", subject, body);
+                result = objCom.SendMail(UserEmail, "R'lyeh@darkoceandepths.com", subject, body);
                 if (result > 0)
                 {
                     int Userid = Convert.ToInt32(formdata["Userid"]);
